@@ -1,5 +1,3 @@
-#pragma once
-
 #include "arrOutput.h"
 
 //Миняев Виктор, 425.
@@ -7,7 +5,7 @@
 
 using namespace std;
 
-void SortedArrOutput(int arrayOfNumbers[], int sizeOfArray) {
+void SortedArrOutput(int*& arrayOfNumbers, size_t & sizeOfArray) {
 	cout << "Вывод отсортированного массива:" << endl;
 	for (int i = 0; i < sizeOfArray; i++) {
 		cout << arrayOfNumbers[i] << '\t';

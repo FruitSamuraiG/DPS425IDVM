@@ -18,6 +18,12 @@
     <ClCompile Include="gnomeSort.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="arrInput.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="arrOutput.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>

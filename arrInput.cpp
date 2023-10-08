@@ -22,9 +22,12 @@ void MakeRandomArray(size_t& sizeOfArray, int*& arrayOfNumbers) {
 
 	arrayOfNumbers = new int[sizeOfArray];
 
+	cout << "Вывод неотсортированного массива" << endl;
 	for (size_t i = 0; i < sizeOfArray; i++) {
 		arrayOfNumbers[i] = rand() % 100;
+		cout << arrayOfNumbers[i] << '\t';
 	}
+	cout << endl;
 
 }
 
@@ -120,7 +123,7 @@ bool IsAReservedName(string string1) {
 	return false;
 }
 
-void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
+void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers) {
 	ifstream file;
 	string path = "input.txt";
 	cout << "Введите путь файла для чтения:\t" << endl;
@@ -135,7 +138,7 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
 	int size = 0;
 	int counter = 0;
 	int symbol = 0;
-	while (!file.eof()) if ((symbol = file.get()) == '\n') {
+	while (!file.eof()) if ((symbol = file.get()) == ' ') {
 		size++;
 		counter++;
 	}
@@ -186,4 +189,10 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
 			}
 		}
 	}
+
+	cout << "Вывод неотсортированного массива:" << endl;
+	for (int i = 0; i < sizeOfArray; i++) {
+		cout << arrayOfNumbers[i] << '\t';
+	}
+	cout << endl;
 }

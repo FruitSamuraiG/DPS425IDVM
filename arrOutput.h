@@ -1,3 +1,4 @@
 #pragma once
+#include <iostream>
 
-void SortedArrOutput(int arrayOfNumbers[], int sizeOfArray);
+void SortedArrOutput(int* & arrayOfNumbers, size_t & sizeOfArray);
