@@ -1,8 +1,32 @@
-#pragma once
-
 #include "arrInput.h"
 
-using namespace std; 
+using namespace std;
+
+void MakeRandomArray(size_t& sizeOfArray, int*& arrayOfNumbers) {
+	srand(time(0));
+	cout << "Введите размер массива: ";
+	while (true) {
+		cin >> sizeOfArray;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(std::numeric_limits<int>::max(), '\n');
+			cout << "Некорректный ввод, попробуйте ещё раз" << endl;
+			continue;
+		}
+		if (sizeOfArray < 1) {
+			cout << "Недопустимый размер массива, попробуйте ещё раз" << endl;
+			continue;
+		}
+		break;
+	}
+
+	arrayOfNumbers = new int[sizeOfArray];
+
+	for (size_t i = 0; i < sizeOfArray; i++) {
+		arrayOfNumbers[i] = rand() % 100;
+	}
+
+}
 
 void StringReverse(string& text) {
 	char temp = ' ';
@@ -99,18 +123,6 @@ bool IsAReservedName(string string1) {
 void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
 	ifstream file;
 	string path = "input.txt";
-
-	while (true) {
-		cout << "Введите путь файла для чтения:\t" << endl;
-		path = StringInputCheck();
-		file.open(path);
-	}
-
-}
-
-void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
-	ifstream file;
-	string path = "input.txt";
 	cout << "Введите путь файла для чтения:\t" << endl;
 	path = StringInputCheck();
 	file.open(path);
@@ -161,6 +173,9 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* arrayOfNumbers) {
 	}
 	else {
 		sizeOfArray = size;
+
+		arrayOfNumbers = new int[size];
+
 		for (size_t i = 0; i < size; i++) {
 			file >> arrayOfNumbers[i];
 			if (file.fail()) {
