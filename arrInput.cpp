@@ -2,10 +2,10 @@
 
 using namespace std;
 
-void MakeRandomArray(size_t& sizeOfArray, int*& arrayOfNumbers) {
-	srand(time(0));
-	cout << "Введите размер массива: ";
-	while (true) {
+void MakeRandomArray(size_t& sizeOfArray, int*& arrayOfNumbers) { //функция реализует возможность создания случайного целочисленного массива
+	srand(time(0));                                               //ничего не возвращает
+	cout << "Введите размер массива: ";                           //принимает в качестве аргумента переменную размера массива по ссылке, а также сам массив по ссылке
+	while (true) {                                                
 		cin >> sizeOfArray;
 		if (cin.fail()) {
 			cin.clear();
@@ -31,18 +31,18 @@ void MakeRandomArray(size_t& sizeOfArray, int*& arrayOfNumbers) {
 
 }
 
-void StringReverse(string& text) {
-	char temp = ' ';
-	for (size_t i = 0; i < (text.size() / 2); i++) {
+void StringReverse(string& text) {                         //функция выполняет реверс символов в строке
+	char temp = ' ';                                       //функция ничего не возвращает
+	for (size_t i = 0; i < (text.size() / 2); i++) {       //функция принимает в качестве аргумента строковую переменную text по ссылке
 		temp = text[i];
 		text[i] = text[text.size() - i - 1];
 		text[text.size() - i - 1] = temp;
 	}
 }
 
-string StringInputCheck() {
-	string tmp;
-	string tmp2;
+string StringInputCheck() {                                //функция выполняет правильность ввода строки (имени файла), запрещает вводить одно из резервированных имен или запрещенные символы
+	string tmp;                                            //функция возвращает строку-имя
+	string tmp2;                                           //функция не принимает аргументов
 	while (true) {
 		bool isStringCorrect = true;
 		getline(cin, tmp);
@@ -72,9 +72,9 @@ string StringInputCheck() {
 	return tmp;
 }
 
-bool IsAReservedName(string string1) {
-
-	const size_t amountOfReservedNames = 22;
+bool IsAReservedName(string string1) {                       //функция выполняет проверку на зарезервированное имя файла  
+	                                                         //функция возвращает булевую переменную, сигнализирующую об успехе или провале проверки
+	const size_t amountOfReservedNames = 22;                 //функция принимает в качестве аргумента строку, содержащую имя файла
 	string reservedNames[amountOfReservedNames] = { "con", "prn" , "aux" , "nul" , "com1" , "com2" , "com3" , "com4" , "com5" , "com6" , "com7" , "com8" , "com9" ,
 	"lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9" };
 
@@ -123,10 +123,11 @@ bool IsAReservedName(string string1) {
 	return false;
 }
 
-void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers) {
-	ifstream file;
-	string path = "input.txt";
+void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers) {            //функция позволяет загрузить массив из файла
+	ifstream file;                                                              //функция ничего не возвращает
+	string path = "input.txt";                                                  //в качестве аргументов принимает размер массива по ссылке, а также сам массив
 	cout << "Введите путь файла для чтения:\t" << endl;
+	cin.ignore();
 	path = StringInputCheck();
 	file.open(path);
 	while (!file.is_open()) {
@@ -153,10 +154,12 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers) {
 	bool isCool = false;
 	while (sym != EOF) {
 		if (sym == '\n') break;
+
 		sym = static_cast <char>(file.get());
 		if (spacesInARow == 1 and sym == '\n') {
 			size--;
 		}
+
 		if (sym == ' ') {
 			spacesInARow++;
 			if (spacesInARow > 1) {
@@ -166,6 +169,7 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers) {
 		else {
 			spacesInARow = 0;
 		}
+
 		isCool = true;
 	}
 	file.clear();
