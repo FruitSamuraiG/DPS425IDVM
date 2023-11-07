@@ -11,4 +11,4 @@ void LoadArrayFromFile(size_t& sizeOfArray, int* & arrayOfNumbers);
 void MakeRandomArray(size_t& sizeOfArray, int* & arrayOfNumbers);
 void StringReverse(string& text);
 string StringInputCheck();
-bool IsAReservedName(string string1);
+bool IsAReservedName(string filename);
