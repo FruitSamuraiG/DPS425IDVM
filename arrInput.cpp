@@ -72,7 +72,7 @@ string StringInputCheck() {                                //функция выполняет п
 	return tmp;
 }
 
-bool IsAReservedName(string string1) {                       //функция выполняет проверку на зарезервированное имя файла  
+bool IsAReservedName(string filename) {                       //функция выполняет проверку на зарезервированное имя файла  
 	                                                         //функция возвращает булевую переменную, сигнализирующую об успехе или провале проверки
 	const size_t amountOfReservedNames = 22;                 //функция принимает в качестве аргумента строку, содержащую имя файла
 	string reservedNames[amountOfReservedNames] = { "con", "prn" , "aux" , "nul" , "com1" , "com2" , "com3" , "com4" , "com5" , "com6" , "com7" , "com8" , "com9" ,
@@ -81,10 +81,10 @@ bool IsAReservedName(string string1) {                       //функция выполняет
 	bool isPointExist = false;
 	size_t point = 0;
 
-	string tmp = string1;
+	string tmp = filename;
 
 	for (size_t i = 0; i < tmp.size(); i++) {
-		tmp[i] = char(tolower(string1[i]));
+		tmp[i] = char(tolower(filename[i]));
 	}
 
 	for (size_t i = 0; i < tmp.size(); i++) {
